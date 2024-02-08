@@ -1,0 +1,327 @@
+@font-face {
+  font-family: 'Kodchasan';
+  src: url('./fonts/Kodchasan-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Base styles for body and text */
+html, body {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  font-family: 'Kodchasan', sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Layout of the game container */
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Game boards with responsive design for 3x3, 4x4, and 5x5 grids */
+.game-board-3, .game-board-4, .game-board-5 {
+  display: grid;
+  margin: 50px 0;
+  justify-items: center;
+  align-content: center;
+}
+
+/* Specific styles for each game board size to ensure proper spacing and layout */
+.game-board-3 {
+  grid-template-columns: repeat(3, minmax(0, 8vw));
+  grid-gap: 1vw;
+}
+
+.game-board-4 {
+  grid-template-columns: repeat(4, minmax(0, 6vw));
+  grid-gap: 1vw;
+}
+
+.game-board-5 {
+  grid-template-columns: repeat(5, minmax(0, 5vw));
+  grid-gap: 1vw;
+}
+
+/* Squares */
+.square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: #eee;
+  border-radius: 8px;
+  box-shadow: 0 4px #ddd;
+  cursor: pointer;
+  font-size: calc(1.5vw + 1.5vh);
+}
+
+.square.highlight {
+  background-color: aquamarine;
+  box-shadow: none;
+}
+
+/* Responsive adjustments for different board sizes */
+.game-board-3 .square {
+  font-size: 4vw;
+}
+
+.game-board-4 .square {
+  font-size: 3vw;
+}
+
+.game-board-5 .square {
+  font-size: 2vw;
+}
+
+/* Styling for player turns indicators */
+.x-turn, .o-turn {
+  font-weight: bold;
+  font-size: 40px;
+  margin-top: 60px;
+}
+.x-turn {
+  color: #ff0000;
+}
+.o-turn {
+  color: #0000ff;
+}
+
+/* Animation for blinking effect */
+@keyframes blinkSlow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Modal window styling for game resets or announcements */
+.modal {
+  width: 250px;
+  border-radius: 16px;
+  box-shadow: 0px 0px 10px 0px gray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background-color: white;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.2s;
+}
+.modal.show {
+  transform: translate(-50%, -50%) scale(1);
+}
+.modal-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.modal-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+.modal-content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 1001;
+}
+.close-modal-button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.modal-popup.visible {
+  display: block;
+}
+
+/* Additional UI elements and their styling */
+.reset-button {
+  border: none;
+  padding: 0;
+  background: none;
+}
+.reset-button img {
+  max-width: 75px;
+  max-height: 75px;
+}
+
+.title {
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  top: 45px;
+  left: 0;
+  margin: 20px 0;
+  display: block;
+}
+.title img {
+  max-width: 100%;
+  height: auto;
+}
+.title a {
+  display: block;
+  font-size: 32px;
+  font-weight: bold;
+  font-style: italic;
+  color: #23A9E2;
+  text-decoration: none;
+  margin-top: 50px;
+  animation: blinkSlow 1.5s infinite;
+}
+
+.small-title img {
+  max-width: 80px;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+
+.game-mode {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 394px;
+}
+
+.game-mode button {
+  background: none;
+  border: none;
+  margin: 0 100px;
+  cursor: pointer;
+}
+
+.replay-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 10px;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+}
+
+.home-button {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
+
+/* Hover effects for buttons */
+.replay-button:hover img, .game-mode button:hover img, .home-button:hover img, .reset-button:hover img {
+  max-width: 85%;
+}
+
+
+/* Responsive design adjustments for tablet devices */
+@media (min-width: 481px) and (max-width: 1024px) {
+  .game-board-3, .game-board-4, .game-board-5 {
+    margin: 2vw auto;
+  }
+  .game-board-3 {
+    grid-template-columns: repeat(3, 20vw);
+    grid-gap: 2vw;
+  }
+  .game-board-4 {
+    grid-template-columns: repeat(4, 15vw);
+    grid-gap: 1.5vw;
+  }
+  .game-board-5 {
+    grid-template-columns: repeat(5, 12vw);
+    grid-gap: 1vw;
+  }
+  .square {
+    font-size: calc(2vw + 2vh);
+  }
+  .game-mode button {
+    margin: 0 50px;
+  }
+  .small-title img {
+    max-width: 100px;
+    top: 25px;
+    left: 25px;
+  }
+  .home-button img {
+    width: 80px;
+    height: auto;
+  }
+  .x-turn, .o-turn {
+    font-size: 40px;
+    margin-top: 30px;
+  }
+}
+
+/* Responsive design adjustments for mobile devices */
+@media (max-width: 480px) {
+  .game-board-3, .game-board-4, .game-board-5 {
+    margin: 5vw auto;
+  }
+  .game-board-3 {
+    grid-template-columns: repeat(3, 28vw);
+    grid-gap: 4vw;
+  }
+  .game-board-4 {
+    grid-template-columns: repeat(4, 20vw);
+    grid-gap: 3vw;
+  }
+  .game-board-5 {
+    grid-template-columns: repeat(5, 16vw);
+    grid-gap: 2vw;
+  }
+  .square {
+    font-size: calc(4vw + 4vh);
+  }
+  .modal {
+    width: 90%;
+    padding: 5%;
+  }
+  .game-mode button {
+    margin: 0 20px;
+  }
+  .replay-button {
+    right: 10px;
+    top: 20px;
+  }
+  .small-title img {
+    max-width: 60px;
+    top: 10px;
+    left: 10px;
+  }
+  .home-button img {
+    width: 60px;
+    height: auto;
+  }
+  .x-turn, .o-turn {
+    font-size: 30px;
+    margin-top: 15px;
+  }
+}

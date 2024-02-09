@@ -324,4 +324,10 @@ a {
     font-size: 30px;
     margin-top: 15px;
   }
+  .replay-button img,
+  .game-mode button img,
+  .home-button img,
+  .reset-button img {
+    max-width: 100%;
+  }
 }

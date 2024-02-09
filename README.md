@@ -1,40 +1,40 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
- 
-First, run the development server:
+How to Access the Game
+The game can be accessed through the link: https://xo-game-rust.vercel.app/
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Design Approach & Algorithms Used
+Tools and Technologies:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+VS Code: Coding environment.
+Next.js: Framework for building the web app.
+Firebase: Database for storing game history and facilitating replays.
+Figma: UI/UX design tool.
+GitHub: Code repository for version control and collaboration.
+HTML, CSS, JavaScript: Core web technologies for building the frontend.
+Vercel: Deployment platform.
+UI Design in Figma:
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+The game's user interface was designed in Figma, ensuring a user-friendly experience.
+Functionality Breakdown:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Tic-Tac-Toe Game Core: The essential game mechanics.
+Adjustable Grid Size: The ability to alter the game board size beyond the standard 3x3 grid.
+Replay System: Viewing past game outcomes.
+Using Next.js as the Framework:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Next.js was chosen for its efficiency in building scalable and fast web applications, as well as its support for server-side rendering, which improves SEO and performance.
+Game Implementation:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Utilized HTML, CSS, and JavaScript to create a dynamic grid that adjusts based on user selection. Gameplay involves alternating X/O marks with each click, ending the game upon winning conditions or a full grid.
+Adjustable Grid Size:
 
-## Learn More
+Implemented a selection system on the homepage, allowing users to choose between 3x3, 4x4, and 5x5 grids. Selecting a size redirects the user to the corresponding game page.
+History and Replay System:
 
-To learn more about Next.js, take a look at the following resources:
+Chose Firebase for its ease of use and compatibility with multiple frameworks, including Next.js. The system records winners, timestamps, and tie conditions, displaying this data in a pop-up window for replays from the homepage.
+Responsive Design:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Efforts were made to ensure the website is responsive, though it is currently optimized mainly for desktop usage, with other platforms needing further adjustments.
+UI Enhancement:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Applied CSS styling as per the Figma designs to ensure the visual aspect matches the planned UI, enhancing user interaction and experience.

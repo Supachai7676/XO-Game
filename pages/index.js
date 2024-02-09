@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Modal from "./components/HistoryModal";
-import { db } from "./firebase";
+import { db } from "../public/firebase";
 import { collection, getDocs } from "firebase/firestore";
 
 export default function Home() {

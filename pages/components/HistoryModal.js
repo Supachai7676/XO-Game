@@ -27,7 +27,11 @@ const getBoardSize = (value) => {
   return boardSizes[value] || 'Unknown Size';
 };
 
-const HistoryModal = ({ isOpen, onRequestClose, gameHistory }) => {
+export const HistoryModal = ({ isOpen, onRequestClose, gameHistory }) => {
+  const sortedGameHistory = gameHistory && Array.isArray(gameHistory)
+    ? gameHistory.sort((a, b) => b.timeStamp.toMillis() - a.timeStamp.toMillis())
+    : [];
+
   return (
     <Modal
       isOpen={isOpen}
@@ -40,15 +44,13 @@ const HistoryModal = ({ isOpen, onRequestClose, gameHistory }) => {
         <div style={{ padding: '5px', fontWeight: 'bold' }}>Winner</div>
         <div style={{ padding: '5px', fontWeight: 'bold' }}>Board Size</div>
         <div style={{ padding: '5px', fontWeight: 'bold' }}>Time</div>
-        {gameHistory
-          .sort((a, b) => b.timeStamp.toMillis() - a.timeStamp.toMillis())
-          .map((game, index) => (
-            <>
-              <div style={{ padding: '5px' }}>{'#' + (gameHistory.length - index)}</div>
-              <div style={{ padding: '5px'}}>{game.isDraw ? 'Draw' : `${game.winner}`}</div>
-              <div style={{ padding: '5px' }}>{getBoardSize(game.boardSize)}</div>
-              <div style={{ padding: '5px' }}>{formatDate(game.timeStamp)}</div>
-            </>
+        {sortedGameHistory.map((game, index) => (
+          <React.Fragment key={index}>
+            <div style={{ padding: '5px' }}>{'#' + (sortedGameHistory.length - index)}</div>
+            <div style={{ padding: '5px'}}>{game.isDraw ? 'Draw' : `${game.winner}`}</div>
+            <div style={{ padding: '5px' }}>{getBoardSize(game.boardSize)}</div>
+            <div style={{ padding: '5px' }}>{formatDate(game.timeStamp)}</div>
+          </React.Fragment>
         ))}
       </div>
     </Modal>
@@ -56,4 +58,3 @@ const HistoryModal = ({ isOpen, onRequestClose, gameHistory }) => {
 };
 
 export default HistoryModal;
-

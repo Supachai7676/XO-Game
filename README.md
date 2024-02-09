@@ -1,6 +1,8 @@
 How to Access the Game
 
-The game can be accessed through the link: https://xo-game-rust.vercel.app/
+*****recommended to access using a desktop Browser
+
+The game can be accessed through the link: https://xo-game-rust.vercel.app/  
 
 Design Approach & Algorithms Used
 1. Tools and Technologies:
